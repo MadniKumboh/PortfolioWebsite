@@ -1,12 +1,11 @@
-name: Linting Check
+name: Linting Pipeline
 
+# Trigger on push and pull request events for develop branch
 on:
   push:
-    branches:
-      - develop
+    branches: [ develop ]
   pull_request:
-    branches:
-      - develop
+    branches: [ develop ]
 
 jobs:
   lint:
