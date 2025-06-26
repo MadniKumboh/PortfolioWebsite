@@ -29,8 +29,19 @@ jobs:
         npm install --save-dev htmlhint stylelint stylelint-config-standard
     
     # Run HTMLHint on all HTML files
-    - name: Lint HTML
-      run: npx htmlhint "src/**/*.html"
-
-    - name: Lint CSS
-      run: npx stylelint "styles/**/*.css"
+    - name: Run HTMLHint
+      run: |
+        if ls **/*.html 1> /dev/null 2>&1; then
+          npx htmlhint "**/*.html"
+        else
+          echo "No HTML files found to lint"
+        fi
+    
+    # Run Stylelint on all CSS files
+    - name: Run Stylelint
+      run: |
+        if ls **/*.css 1> /dev/null 2>&1; then
+          npx stylelint "**/*.css"
+        else
+          echo "No CSS files found to lint"
+        fi
