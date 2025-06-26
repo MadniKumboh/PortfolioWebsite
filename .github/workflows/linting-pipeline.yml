@@ -25,16 +25,10 @@ jobs:
 
       - name: Run HTMLHint
         run: |
-          if ls **/*.html 1> /dev/null 2>&1; then
-            npx htmlhint "**/*.html"
-          else
-            echo "No HTML files found to lint"
-          fi
+          echo "Checking HTML files..."
+          find . -name "*.html" | grep . && npx htmlhint "**/*.html" || echo "No HTML files found."
     
       - name: Run Stylelint
         run: |
-          if ls **/*.css 1> /dev/null 2>&1; then
-            npx stylelint "**/*.css"
-          else
-            echo "No CSS files found to lint"
-          fi
+          echo "Checking CSS files..."
+          find . -name "*.css" | grep . && npx stylelint "**/*.css" || echo "No CSS files found."
